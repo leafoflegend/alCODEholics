@@ -17,7 +17,7 @@ We've got your back:
 First, clone this repo locally, then remove the current `.git` folder. Follow this up with making it a new git repo.
 
 ```bash
-rm -rf .git
+rm -rf .gitZ
 
 git init
 ```
@@ -105,3 +105,7 @@ Once that command runs, you can type `heroku open` to get a browser to open up l
 ### TESTING
 
 Git Push / Pull
+
+### TESTING #2
+
+Testing: Maxwell
