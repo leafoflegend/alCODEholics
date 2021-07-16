@@ -105,8 +105,18 @@ Once that command runs, you can type `heroku open` to get a browser to open up l
 ### Database Tables
 
 -Users:
-    -
+    - ID
+    - Name
+    - Password
+    - Is-Admin : Boolean
 
 -Alcohols:
-    -
-    Vodka
+    - Type
+    - Name
+    - Price
+    - Description
+    - In-Stock : Boolean
+
+-Cart
+    - Users Id
+    - Alcohols Id
