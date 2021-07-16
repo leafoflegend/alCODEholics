@@ -108,5 +108,4 @@ Once that command runs, you can type `heroku open` to get a browser to open up l
     -
 
 -Alcohols:
-    -
-    Vodka
+    - Type
