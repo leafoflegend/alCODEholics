@@ -17,11 +17,7 @@ We've got your back:
 First, clone this repo locally, then remove the current `.git` folder. Follow this up with making it a new git repo.
 
 ```bash
-<<<<<<< HEAD
-rm -rf .git
-=======
 rm -rf .gitZ
->>>>>>> 1cdd146b11e87071783bf02c49178ab59f14fe56
 
 git init
 ```
@@ -36,11 +32,7 @@ Once you decide on that name, make sure to run `createdb` from your command line
 
 Finally you can run `npm run server:dev` to start the web server.
 
-<<<<<<< HEAD
-In a second terminal navigate back to the local repo and run `npm run client:dev` to start the react server. 
-=======
 In a second terminal navigate back to the local repo and run `npm run client:dev` to start the react server.
->>>>>>> 1cdd146b11e87071783bf02c49178ab59f14fe56
 
 This is set up to run on a proxy, so that you can make calls back to your `api` without needing absolute paths. You can instead `axios.get('/api/posts')` or whatever without needing to know the root URL.
 
