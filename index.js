@@ -14,10 +14,13 @@ server.use(bodyParser.json());
 const path = require('path');
 server.use(express.static(path.join(__dirname, 'build')));
 
+<<<<<<< HEAD
+=======
 // here's our CORS
 const cors = require('cors')
 server.use(cors())
 
+>>>>>>> 1cdd146b11e87071783bf02c49178ab59f14fe56
 // here's our API
 server.use('/api', require('./routes'));
 
