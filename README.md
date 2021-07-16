@@ -104,7 +104,7 @@ Once that command runs, you can type `heroku open` to get a browser to open up l
 
 ### TESTING
 
-Git Push / Pull
+Jordan Test: Can I push this to the github and make a pull request? Let's find out!
 
 ### TESTING #2
 
