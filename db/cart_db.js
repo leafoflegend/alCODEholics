@@ -1,8 +1,5 @@
-// Connect to DB
-const { Client } = require("pg");
-const DB_NAME = "alCODEholics";
-const DB_URL = process.env.DATABASE_URL || `postgres://localhost:5432/${DB_NAME}`;
-const client = new Client(DB_URL);
+const {client} = require('./index')
+
 
 // database methods
 const addToCart = async ({ type, name }) => {
@@ -30,7 +27,6 @@ const removeFromCart = async () => {
 
 // export
 module.exports = {
-  client,
   addToCart,
   removeFromCart,
 };

@@ -1,5 +1,5 @@
-// code to build and initialize DB goes here
-const { client, createAlcohol, createUser } = require("./index");
+const { client } = require('./client')
+const { createAlcohol, createUser } = require("./index");
 
 async function buildTables() {
   try {
