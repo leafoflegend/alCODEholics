@@ -17,7 +17,7 @@ We've got your back:
 First, clone this repo locally, then remove the current `.git` folder. Follow this up with making it a new git repo.
 
 ```bash
-rm -rf .gitZ
+rm -rf .git
 
 git init
 ```
@@ -102,17 +102,21 @@ Which will run `npm run db:build` on the heroku server.
 
 Once that command runs, you can type `heroku open` to get a browser to open up locally with your full-stack application running remotely.
 
-### TESTING
+### Database Tables
 
-Git Push / Pull
+-Users:
+    - ID
+    - Name
+    - Password
+    - Is-Admin : Boolean
 
-### TESTING #2
+-Alcohols:
+    - Type
+    - Name
+    - Price
+    - Description
+    - In-Stock : Boolean
 
-Testing: Maxwell
-
-### TESTING #3
-
-Testing: Brian
-
-### TESTING #4
-Testing: Chris
+-Cart
+    - Users Id
+    - Alcohols Id

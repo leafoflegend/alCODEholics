@@ -1,36 +1,63 @@
-// Connect to DB
-const { Client } = require("pg");
-const DB_NAME = "alCODEholics";
-const DB_URL = process.env.DATABASE_URL || `postgres://localhost:5432/${DB_NAME}`;
-const client = new Client(DB_URL);
 
-// database methods
-const createAlcohol = async ({ type, name }) => {
-  const { rows } = await client.query(
-    `
-  INSERT INTO alcohols(type, name)
-  VALUES($1, $2)
-  RETURNING *
-  `,
-    [type, name]
-  );
 
-  return rows;
-};
+const { createAlcohol } = require('./alcohols_db');
+const { createUser } = require("./users_db");
 
-const getAlcohol = async () => {
-  const { rows } = await client.query(`
-  SELECT type, name
-  FROM alcohols
-  `);
+//USER DATABASE METHODS
+// const createUser = async ({ username, password, isAdmin }) => {
+//   try {
+//       const { rows } = await client.query(
+//           `
+//         INSERT INTO users(username, password, "isAdmin")
+//         VALUES($1, $2, $3)
+//         RETURNING *
+//         `,
+//           [username, password, isAdmin]
+//         );
+      
+//         return rows;
+//   } catch (error) {
+//       throw error
+//   }
 
-  return rows;
-};
+// };
+
+// const getUser = async () => {
+//   try {
+//       const { rows } = await client.query(`
+// SELECT username, password, "isAdmin"
+// FROM users
+// `);
+
+// return rows;
+//   } catch (error) {
+//       throw error
+//   }
+
+// };
+
+//ALCOHOL DATABASE METHODS
+// const createAlcohol = async ({ type, name, inStock }) => {
+//   try {
+//     const { rows } = await client.query(
+//       `
+//           INSERT INTO alcohols(type, name, "inStock")
+//           VALUES($1, $2, $3)
+//           RETURNING *
+//           `,
+//       [type, name, inStock]
+//     );
+
+//     return rows;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
+
+//CART DATABASE METHODS
 
 // export
 module.exports = {
-  client,
   createAlcohol,
-  getAlcohol,
-  // db methods
+  createUser,
 };

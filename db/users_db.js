@@ -1,3 +1,5 @@
+const { client } = require("./index");
+
 async function getAllUsers() {
     try {
       const { rows } = await client.query(
@@ -47,3 +49,9 @@ async function getAllUsers() {
       throw error;
     }
   }
+
+module.exports = {
+  createUser,
+  getUserById,
+  getAllUsers
+};
