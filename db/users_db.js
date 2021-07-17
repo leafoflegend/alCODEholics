@@ -1,9 +1,8 @@
-const { client } = require("./index");
+const client = require('./client')
 
-// database methods
 const createUser = async ({ username, password, isAdmin }) => {
   try {
-    const { rows } = await client.query(
+    const { rows: [user] } = await client.query(
       `
           INSERT INTO users(username, password, "isAdmin")
           VALUES($1, $2, $3)
@@ -12,7 +11,7 @@ const createUser = async ({ username, password, isAdmin }) => {
       [username, password, isAdmin]
     );
 
-    return rows;
+    return user;
   } catch (error) {
     throw error;
   }

@@ -1,6 +1,5 @@
-const { client } = require("./index");
+const client = require('./client')
 
-// database methods
 const createAlcohol = async ({ type, name, inStock }) => {
   try {
     const { rows } = await client.query(

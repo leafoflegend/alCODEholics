@@ -1,4 +1,5 @@
-const { client } = require('./client')
+const client = require('./client')
+
 const { createAlcohol, createUser } = require("./index");
 
 async function buildTables() {
