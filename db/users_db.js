@@ -1,4 +1,7 @@
-const { client } = require("./index");
+const { client } = require("./client");
+const bcrypt = require("bcrypt");
+const SALT = process.env.SALT || 10;
+const { createJWT } = require('./user_utils');
 
 async function getAllUsers() {
     try {
@@ -31,18 +34,21 @@ async function getAllUsers() {
     }
   }
   
-  async function createUser({
+  async function registerUser({
     username,
     password,
     isAdmin
   }) {
+
+    const hashedPassword = bcrypt.hash(password, SALT)
+
     try {
       const { rows: [user] } = await client.query(`
         INSERT INTO users(username, password, "isAdmin")
         VALUES($1, $2, $3)
         ON CONFLICT (username) DO NOTHING
         RETURNING *;
-      `, [username, password, isAdmin]);
+      `, [username, hashedPassword, isAdmin]);
   
       return user;
     } catch (error) {
@@ -50,8 +56,34 @@ async function getAllUsers() {
     }
   }
 
+  async function loginUser(username, password) {
+    try {
+      const hashedPassword = bcrypt.hash(password, SALT);
+
+      const { rows: [user] } = await client.query(`
+        SELECT id, username, "isAdmin"
+        FROM users 
+        WHERE username=$1 AND password=$2;
+      `, [username, hashedPassword])
+  
+      if (!user) {
+        return null;
+      }
+
+      const passwordMatches = await bcrypt.compare(hashedPassword, user.password);
+      if (!passwordMatches) {
+        return null;
+      }
+
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 module.exports = {
-  createUser,
+  registerUser,
+  loginUser,
   getUserById,
   getAllUsers
 };
