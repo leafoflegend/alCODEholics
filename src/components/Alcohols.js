@@ -27,19 +27,23 @@ const GetAllAlocohols = (props) => {
   }, [setAlcohols]);
 
   return (
-    <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        border: '2px solid black'
-    }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-around",
+        marginTop: '50px'
+      }}
+    >
       {alcohols.map((alcohol, index) => {
         return (
           <div key={index}>
-            <Card style={{
-                width: '250px',
-                height: '300px'
-            }}>
+            <Card
+              style={{
+                width: "250px",
+                height: "300px",
+              }}
+            >
               <CardImg
                 top
                 width="100%"
@@ -49,9 +53,10 @@ const GetAllAlocohols = (props) => {
               <CardBody>
                 <CardTitle tag="h5">{alcohol.name}</CardTitle>
                 <CardSubtitle tag="h6" className="mb-2 text-muted">
-                  {alcohol.type}
+                  Type: {alcohol.type} / Price: {alcohol.price}
                 </CardSubtitle>
                 <CardText>
+                  {alcohol.description}
                   {alcohol.instock}
                 </CardText>
                 <Button>Add To Cart</Button>
