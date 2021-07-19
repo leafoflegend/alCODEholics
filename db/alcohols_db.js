@@ -30,6 +30,12 @@ const getAllAlcohol = async () => {
   }
 };
 
+//getAlcholById
+
+//getAlcholbyUserId
+
+
+
 // export
 module.exports = {
   createAlcohol,

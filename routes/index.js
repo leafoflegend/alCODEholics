@@ -22,7 +22,19 @@ apiRouter.get("/users", async (req, res, next) => {
   
 })
 
+apiRouter.get("/alcohol", async (req, res, next) => {
 
+  try {
+    const alcohol = await getAllAlcohol()
+
+  res.send({
+    alcohol : alcohol
+  })
+  } catch (error) {
+    throw error
+  }
+  
+})
 
 
 
