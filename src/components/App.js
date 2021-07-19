@@ -1,27 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router,
+  Route,
+  Switch } from 'react-router-dom'
 
-import {
-  getSomething
-} from '../api';
+import Navbar from './Navbar'
+import Users from './Users'
+import Alcohols from './Alcohols'
 
 const App = () => {
-  const [message, setMessage] = useState('');
+  const [users, setUsers] = useState([])
+  const [alcohols, setAlcohols] = useState([])
 
-  useEffect(() => {
-    getSomething()
-      .then(response => {
-        setMessage(response.message);
-      })
-      .catch(error => {
-        setMessage(error.message);
-      });
-  });
 
   return (
-    <div className="App">
-      <h1>Hello, World!</h1>
-      <h2>{ message }</h2>
-    </div>
+    <Router>
+      <Switch>
+      <div className="App">
+      <Navbar />
+      <Route path='/users'>
+        <Users
+        users = {users}
+        setUsers = {setUsers}
+        />
+      </Route>
+      <Route path='/alcohol'>
+        <Alcohols
+        alcohols = {alcohols}
+        setAlcohols = {setAlcohols}
+        />
+      </Route>
+      </div>
+      </Switch>
+    </Router>
   );
 }
 
