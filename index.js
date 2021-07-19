@@ -26,6 +26,29 @@ server.use((req, res, next) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
 
+// middleware for user authentication
+const { verifyJWT } = require('./routes/user_utils');
+
+const authMiddleware = (req, res, next) => {
+  let authHeader = req.headers.authorization;
+
+  if(authHeader){
+    authHeader = authHeader.slice(7);
+    try {
+      const decodedToken = verifyJWT(authHeader);
+
+      req.user = decodedToken;
+
+    } catch (error) {
+      console.log('Invalid JWT')
+    }
+      
+  }
+  next();
+}
+
+server.use(authMiddleware);
+
 // bring in the DB connection
 const client = require('./db/client');
 

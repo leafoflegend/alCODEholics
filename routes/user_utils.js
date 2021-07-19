@@ -14,7 +14,7 @@ const verifyJWT = (token) => {
         return null;
     }
 
-     return decodedToken;
+    return decodedToken;
 }
 
 module.exports = {createJWT, verifyJWT};
