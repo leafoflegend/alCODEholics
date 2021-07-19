@@ -17,7 +17,7 @@ const createAlcohol = async ({ type, name, inStock }) => {
   }
 };
 
-const getAlcohol = async () => {
+const getAllAlcohol = async () => {
   try {
     const { rows } = await client.query(`
   SELECT type, name, "inStock"
@@ -30,8 +30,14 @@ const getAlcohol = async () => {
   }
 };
 
+//getAlcholById
+
+//getAlcholbyUserId
+
+
+
 // export
 module.exports = {
   createAlcohol,
-  getAlcohol,
+  getAllAlcohol,
 };
