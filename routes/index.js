@@ -1,6 +1,6 @@
 const apiRouter = require('express').Router();
 
-const { getAllUsers } = require('../db/index')
+const { getAllUsers, getAllAlcohol } = require('../db/index')
 
 apiRouter.get("/", (req, res, next) => {
   res.send({
@@ -21,5 +21,9 @@ apiRouter.get("/users", async (req, res, next) => {
   }
   
 })
+
+
+
+
 
 module.exports = apiRouter;
