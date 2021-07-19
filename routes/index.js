@@ -36,18 +36,6 @@ apiRouter.get("/alcohol", async (req, res, next) => {
   
 })
 
-// apiRouter.get("/cart", async (req, res, next) => {
 
-//   try {
-    
-
-//   res.send({
-    
-//   })
-//   } catch (error) {
-//     throw error
-//   }
-  
-// })
 
 module.exports = apiRouter;

@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-export async function getSomething() {
+
+
+export async function getDemUsers() {
   try {
-    const { data } = await axios.get('/api');
-    return data;
+    const {data: {user}} = await axios.get('/api/users')
+
+    return user
   } catch (error) {
-    throw error;
+    console.log(error)
   }
 }
 
