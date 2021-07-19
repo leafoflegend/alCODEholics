@@ -5,9 +5,11 @@ import { BrowserRouter as Router,
 
 import Navbar from './Navbar'
 import Users from './Users'
+import Alcohols from './Alcohols'
 
 const App = () => {
   const [users, setUsers] = useState([])
+  const [alcohols, setAlcohols] = useState([])
 
 
   return (
@@ -19,6 +21,12 @@ const App = () => {
         <Users
         users = {users}
         setUsers = {setUsers}
+        />
+      </Route>
+      <Route path='/alcohol'>
+        <Alcohols
+        alcohols = {alcohols}
+        setAlcohols = {setAlcohols}
         />
       </Route>
       </div>
