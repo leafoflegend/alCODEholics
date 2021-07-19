@@ -8,7 +8,7 @@ const createJWT = (username, password) => {
 }
 
 const verifyJWT = (token) => {
-    const decodedToken = jwt.cerify(token, JWT_SECRET);
+    const decodedToken = jwt.verify(token, JWT_SECRET);
 
     if (!decodedToken) {
         return null;

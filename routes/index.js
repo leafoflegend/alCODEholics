@@ -1,5 +1,5 @@
 const apiRouter = require('express').Router();
-const { verifyJWT } = require('../db/user_utils');
+const usersRouter = require('./users');
 
 const authMiddleware = (req, res, next) => {
   let authHeader = req.headers.authorization;
@@ -28,19 +28,7 @@ apiRouter.get("/", (req, res, next) => {
   });
 });
 
-apiRouter.get("/users", async (req, res, next) => {
-
-  try {
-    const user = await getAllUsers()
-
-  res.send({
-    user: user
-  })
-  } catch (error) {
-    throw error
-  }
-  
-})
+apiRouter.use('/users', usersRouter);
 
 apiRouter.get("/alcohol", async (req, res, next) => {
 

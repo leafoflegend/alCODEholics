@@ -1,7 +1,6 @@
 const { client } = require("./client");
 const bcrypt = require("bcrypt");
 const SALT = process.env.SALT || 10;
-const { createJWT } = require('./user_utils');
 
 async function getAllUsers() {
     try {
@@ -40,7 +39,7 @@ async function getAllUsers() {
     isAdmin
   }) {
 
-    const hashedPassword = bcrypt.hash(password, SALT)
+    const hashedPassword = await bcrypt.hash(password, SALT)
 
     try {
       const { rows: [user] } = await client.query(`
@@ -58,13 +57,12 @@ async function getAllUsers() {
 
   async function loginUser(username, password) {
     try {
-      const hashedPassword = bcrypt.hash(password, SALT);
+      const hashedPassword = await bcrypt.hash(password, SALT);
 
       const { rows: [user] } = await client.query(`
-        SELECT id, username, "isAdmin"
-        FROM users 
-        WHERE username=$1 AND password=$2;
-      `, [username, hashedPassword])
+        SELECT * FROM users 
+        WHERE username=$1;
+      `, [username])
   
       if (!user) {
         return null;

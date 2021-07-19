@@ -7,6 +7,8 @@ const {
     loginUser
 } = require('../db/users_db');
 
+const { createJWT } = require('./user_utils');
+
 usersRouter.get('/', async (req, res, next) => {
     const users = await getAllUsers();
 
@@ -37,7 +39,16 @@ usersRouter.post('/login', async (req, res, next) => {
     if (!user) {
         res.status(401).send({message: "User not found."});
     } else {
-        res.send(user);
+        const token = createJWT(user.username, user.id);
+
+        res.send({
+            message: "Login Successful.",
+            user: {
+                id: user.id,
+                username: user.username
+            },
+            token
+        })
     }
 })
 
