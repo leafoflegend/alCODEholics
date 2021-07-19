@@ -1,6 +1,6 @@
 const apiRouter = require('express').Router();
 
-const { getUser } = require('../db/index')
+const { getAllUsers } = require('../db/index')
 
 apiRouter.get("/", (req, res, next) => {
   res.send({
@@ -11,7 +11,7 @@ apiRouter.get("/", (req, res, next) => {
 apiRouter.get("/users", async (req, res, next) => {
 
   try {
-    const user = await getUser()
+    const user = await getAllUsers()
 
   res.send({
     user: user
