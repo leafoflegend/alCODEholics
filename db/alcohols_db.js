@@ -1,15 +1,14 @@
-const { client } = require("./index");
+const client = require('./client')
 
-// database methods
-const createAlcohol = async ({ type, name, inStock }) => {
+const createAlcohol = async ({ type, name, price, description, inStock }) => {
   try {
     const { rows } = await client.query(
       `
-          INSERT INTO alcohols(type, name, "inStock")
-          VALUES($1, $2, $3)
+          INSERT INTO alcohols(type, name, price, description, "inStock")
+          VALUES($1, $2, $3, $4, $5)
           RETURNING *
           `,
-      [type, name, inStock]
+      [type, name, price, description, inStock]
     );
 
     return rows;
@@ -18,10 +17,10 @@ const createAlcohol = async ({ type, name, inStock }) => {
   }
 };
 
-const getAlcohol = async () => {
+const getAllAlcohol = async () => {
   try {
     const { rows } = await client.query(`
-  SELECT type, name, "inStock"
+  SELECT type, name, price, description, "inStock"
   FROM alcohols
   `);
 
@@ -31,8 +30,29 @@ const getAlcohol = async () => {
   }
 };
 
+
+//getAlcoholById
+const getAlcoholById = async (id) => {
+  try {
+    const {rows: [alcohol]} = await client.query(`
+      SELECT *
+      FROM alcohols
+      WHERE id=$1
+    `, [id])
+
+    return alcohol
+  } catch (error) {
+    throw error
+  }
+}
+
+//getAlcoholbyUserId
+
+
+
 // export
 module.exports = {
   createAlcohol,
-  getAlcohol,
+  getAllAlcohol,
+  getAlcoholById
 };

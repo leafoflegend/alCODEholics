@@ -1,7 +1,5 @@
-const {client} = require('./index')
+const client = require('./client')
 
-
-// database methods
 const addToCart = async ({ type, name }) => {
   const { rows } = await client.query(
     `
@@ -23,6 +21,8 @@ const removeFromCart = async () => {
 
   return rows;
 };
+
+
 
 
 // export
