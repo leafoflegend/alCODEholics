@@ -53,7 +53,7 @@ const GetAllAlocohols = (props) => {
               <CardBody>
                 <CardTitle tag="h5">{alcohol.name}</CardTitle>
                 <CardSubtitle tag="h6" className="mb-2 text-muted">
-                  Type: {alcohol.type} / Price: {alcohol.price}
+                  Type: {alcohol.type} / Price: ${alcohol.price}
                 </CardSubtitle>
                 <CardText>
                   {alcohol.description}

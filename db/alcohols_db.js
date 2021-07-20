@@ -30,9 +30,9 @@ const getAllAlcohol = async () => {
   }
 };
 
-//getAlcholById
+//getAlcoholById
 
-//getAlcholbyUserId
+//getAlcoholByUserId
 
 
 
