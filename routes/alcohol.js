@@ -4,7 +4,7 @@ const {
     getAllAlcohol,
     getAlcoholById } = require("../db/index")
 
-alcoholRouter.get("/alcohol", async (req, res, next) => {
+alcoholRouter.get("/", async (req, res, next) => {
 
     try {
       const alcohol = await getAllAlcohol()
@@ -18,7 +18,7 @@ alcoholRouter.get("/alcohol", async (req, res, next) => {
 
   })
 
-  alcoholRouter.get("/alcohol/:id", async (req, res, next) => {
+  alcoholRouter.get("/:id", async (req, res, next) => {
 
     const { id } = req.params
     try {
