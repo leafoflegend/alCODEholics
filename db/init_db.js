@@ -1,6 +1,6 @@
 const client = require('./client')
 
-const { createAlcohol, createUser } = require("./index");
+const { createAlcohol, registerUser } = require("./index");
 
 async function buildTables() {
   try {
@@ -72,7 +72,7 @@ async function populateInitialUsers() {
       },
     ];
 
-    const users = await Promise.all(usersToCreate.map(createUser));
+    const users = await Promise.all(usersToCreate.map(registerUser));
 
     console.log("Users Created");
     console.log("Users Created: ", users);
