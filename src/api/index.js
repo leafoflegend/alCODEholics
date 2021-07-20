@@ -12,9 +12,9 @@ export async function getDemAlcohols() {
 
 export async function getDemUsers() {
   try {
-    const {data: {user}} = await axios.get('/api/users')
+    const { data } = await axios.get('/api/users')
 
-    return user
+    return data
   } catch (error) {
     console.log(error)
   }
