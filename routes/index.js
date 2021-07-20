@@ -1,7 +1,6 @@
 const apiRouter = require('express').Router();
 const usersRouter = require('./users');
-
-const { getAllUsers, getAllAlcohol } = require('../db/index')
+const alcoholRouter = require("./alcohol")
 
 apiRouter.get("/", (req, res, next) => {
   res.send({
@@ -11,20 +10,6 @@ apiRouter.get("/", (req, res, next) => {
 
 apiRouter.use('/users', usersRouter);
 
-apiRouter.get("/alcohol", async (req, res, next) => {
-
-  try {
-    const alcohol = await getAllAlcohol()
-
-  res.send({
-    alcohol : alcohol
-  })
-  } catch (error) {
-    throw error
-  }
-  
-})
-
-
+apiRouter.use('/alcohol', alcoholRouter);
 
 module.exports = apiRouter;

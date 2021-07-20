@@ -30,9 +30,23 @@ const getAllAlcohol = async () => {
   }
 };
 
-//getAlcholById
 
-//getAlcholbyUserId
+//getAlcoholById
+const getAlcoholById = async (id) => {
+  try {
+    const {rows: [alcohol]} = await client.query(`
+      SELECT *
+      FROM alcohols
+      WHERE id=$1
+    `, [id])
+
+    return alcohol
+  } catch (error) {
+    throw error
+  }
+}
+
+//getAlcoholbyUserId
 
 
 
@@ -40,4 +54,5 @@ const getAllAlcohol = async () => {
 module.exports = {
   createAlcohol,
   getAllAlcohol,
+  getAlcoholById
 };

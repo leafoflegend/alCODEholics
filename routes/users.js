@@ -5,7 +5,7 @@ const {
     getUserById,
     registerUser,
     loginUser
-} = require('../db/users_db');
+} = require('../db/index');
 
 const { createJWT } = require('./user_utils');
 
@@ -27,7 +27,7 @@ usersRouter.post('/register', async (req, res, next) => {
     const user = await registerUser(username, password);
 
     res.send({
-        user: user, 
+        user: user,
         message: "User has been registered successfully."
     });
 })
