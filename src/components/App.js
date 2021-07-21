@@ -6,10 +6,13 @@ import { BrowserRouter as Router,
 import Navbar from './Navbar'
 import Users from './Users'
 import Alcohols from './Alcohols'
+import RegisterForm from './RegisterForm'
 
 const App = () => {
   const [users, setUsers] = useState([])
   const [alcohols, setAlcohols] = useState([])
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
 
   return (
@@ -27,6 +30,14 @@ const App = () => {
         <Alcohols
         alcohols = {alcohols}
         setAlcohols = {setAlcohols}
+        />
+      </Route>
+      <Route path='/registerUserAccount'>
+        <RegisterForm
+        username = {username}
+        setUsername = {setUsername}
+        password = {password}
+        setPassword = {setPassword}
         />
       </Route>
       </div>
