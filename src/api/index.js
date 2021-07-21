@@ -20,9 +20,9 @@ export async function getDemUsers() {
   }
 }
 
-export async function registerUserAccount(username, password, isAdmin) {
+export async function registerUserAccount(username, password) {
   try {
-    await axios.post('/api/users/register', {username, password, isAdmin})
+    await axios.post('/api/users/register', {username, password})
 
     return true
   } catch (error) {

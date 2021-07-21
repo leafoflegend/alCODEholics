@@ -35,19 +35,18 @@ async function getAllUsers() {
   
   async function registerUser({
     username,
-    password,
-    isAdmin
+    password
   }) {
 
     const hashedPassword = await bcrypt.hash(password, SALT)
 
     try {
       const { rows: [user] } = await client.query(`
-        INSERT INTO users(username, password, "isAdmin")
-        VALUES($1, $2, $3)
+        INSERT INTO users(username, password)
+        VALUES($1, $2)
         ON CONFLICT (username) DO NOTHING
         RETURNING *;
-      `, [username, hashedPassword, isAdmin]);
+      `, [username, hashedPassword]);
   
       return user;
     } catch (error) {
