@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export async function getDemAlcohols() {
   try {
-    const { data } = await axios.get('/api/alcohol')
+    const { data: {alcohol} } = await axios.get('/api/alcohol')
 
-    return data
+    return alcohol
   } catch (error) {
     console.log(error)
   }
