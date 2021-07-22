@@ -26,10 +26,20 @@ usersRouter.post('/register', async (req, res, next) => {
     const { username, password, isAdmin } = req.body;
     const user = await registerUser({username, password, isAdmin});
 
-    res.send({
-        user: user,
-        message: "User has been registered successfully."
-    });
+    if (!user) {
+        res.status(401).send({message: "User could not be registered."});
+    } else {
+        const token = createJWT(user.username, user.id);
+
+        res.send({
+            message: "Registration Successful.",
+            user: {
+                id: user.id,
+                username: user.username
+            },
+            token
+        })
+    }
 })
 
 usersRouter.post('/login', async (req, res, next) => {
