@@ -31,12 +31,14 @@ async function buildTables() {
         name VARCHAR(255) NOT NULL,
         price NUMERIC NOT NULL,
         description VARCHAR(255),
-        "inStock" BOOLEAN DEFAULT false
+        "inStock" BOOLEAN DEFAULT false,
+        inventory INT DEFAULT 1 NOT NULL
         );
       CREATE TABLE cart(
         id SERIAL PRIMARY KEY,
         "userId" INT REFERENCES users("id"),
-        "alcoholId" INT REFERENCES alcohols("id")
+        "alcoholId" INT REFERENCES alcohols("id"),
+        status VARCHAR(255) NOT NULL
       );
         `
     );

@@ -22,6 +22,10 @@ const removeFromCart = async () => {
   return rows;
 };
 
+const checkout = async () => {
+  //change the status of cart items to completed
+  //subtract cart amount from alcohols inventory column
+}
 
 
 
