@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export async function getDemAlcohols() {
   try {
-    const { data: {alcohol} } = await axios.get('/api/alcohol')
+    const { data } = await axios.get('/api/alcohol')
 
-    return alcohol
+    return data
   } catch (error) {
     console.log(error)
   }
@@ -12,9 +12,9 @@ export async function getDemAlcohols() {
 
 export async function getDemUsers() {
   try {
-    const {data: {user}} = await axios.get('/api/users')
+    const {data} = await axios.get('/api/users')
 
-    return user
+    return data
   } catch (error) {
     console.log(error)
   }
