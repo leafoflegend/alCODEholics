@@ -23,8 +23,10 @@ usersRouter.get('/:userId', async (req, res, next) => {
 })
 
 usersRouter.post('/register', async (req, res, next) => {
-    const { username, password, isAdmin } = req.body;
-    const user = await registerUser({username, password, isAdmin});
+
+    const { username, password } = req.body;
+    const user = await registerUser({username, password});
+
 
     if (!user) {
         res.status(401).send({message: "User could not be registered."});

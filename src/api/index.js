@@ -12,7 +12,9 @@ export async function getDemAlcohols() {
 
 export async function getDemUsers() {
   try {
-    const {data} = await axios.get('/api/users')
+
+    const { data } = await axios.get('/api/users')
+
 
     return data
   } catch (error) {
@@ -20,3 +22,12 @@ export async function getDemUsers() {
   }
 }
 
+export async function registerUserAccount(username, password) {
+  try {
+    await axios.post('/api/users/register', {username, password})
+
+    return true
+  } catch (error) {
+    console.log(error)
+  }
+}
