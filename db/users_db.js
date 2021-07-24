@@ -4,17 +4,18 @@ const SALT = process.env.SALT || 10;
 
 async function getAllUsers() {
     try {
+      // Umm... why would you ever return a users password? This is an ENORMOUS security concern...
       const { rows } = await client.query(
         `SELECT id, username, password, "isAdmin" 
         FROM users;
       `);
-    
+
       return rows;
     } catch (error) {
       throw error;
     }
   }
-  
+
   async function getUserById(userId) {
     try {
       const { rows: [user] } = await client.query(`
@@ -22,17 +23,17 @@ async function getAllUsers() {
         FROM users 
         WHERE id=${userId}
       `)
-  
+
       if (!user) {
         return null;
       }
-  
+
       return user;
     } catch (error) {
       throw error;
     }
   }
-  
+
   async function registerUser({
     username,
     password
@@ -47,7 +48,7 @@ async function getAllUsers() {
         ON CONFLICT (username) DO NOTHING
         RETURNING *;
       `, [username, hashedPassword]);
-  
+
       return user;
     } catch (error) {
       throw error;
@@ -62,7 +63,7 @@ async function getAllUsers() {
         SELECT * FROM users 
         WHERE username=$1;
       `, [username])
-  
+
       if (!user) {
         return null;
       }

@@ -10,6 +10,7 @@ const {
 const { createJWT } = require('./user_utils');
 
 usersRouter.get('/', async (req, res, next) => {
+    // You are sending users hashed passwords down to clients using this 😬
     const users = await getAllUsers();
 
     res.send(users);
@@ -17,6 +18,7 @@ usersRouter.get('/', async (req, res, next) => {
 
 usersRouter.get('/:userId', async (req, res, next) => {
     const { userId } = req.params;
+    // What if theres no user by this id?
     const user = await getUserById(userId);
 
     res.send(user);

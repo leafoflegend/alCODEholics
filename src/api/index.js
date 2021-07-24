@@ -24,6 +24,7 @@ export async function getDemUsers() {
 
 export async function registerUserAccount(username, password) {
   try {
+    // Are we not expecting any sort of response here?
     await axios.post('/api/users/register', {username, password})
 
     return true

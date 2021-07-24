@@ -24,6 +24,7 @@ const GetAllAlocohols = (props) => {
         setAlcohols(alcohols);
       })
       .catch(console.error);
+    // [setAlcohols] makes no sense... The thing in the array means: "if this thing updates, re run this useEffect function". When is the function "setAlcohol" going to update? Do you even want alcohols to update after initial mount?
   }, [setAlcohols]);
 
   return (

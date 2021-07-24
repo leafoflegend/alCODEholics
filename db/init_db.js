@@ -2,6 +2,7 @@ const client = require('./client')
 
 const { createAlcohol, registerUser } = require("./index");
 
+// I like the amount of logging and the verbiage for it!
 async function buildTables() {
   try {
     client.connect();

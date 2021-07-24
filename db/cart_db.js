@@ -1,5 +1,6 @@
 const client = require('./client')
 
+// Same spacing/new line concerns as alcohols_db.js
 const addToCart = async ({ type, name }) => {
   const { rows } = await client.query(
     `

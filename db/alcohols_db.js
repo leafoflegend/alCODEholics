@@ -1,5 +1,6 @@
 const client = require('./client')
 
+// Inconsistent in your spacing/new line usage across these functions, pick one level of indentation and stick with it!
 const createAlcohol = async ({ type, name, price, description, inStock }) => {
   try {
     const { rows } = await client.query(
@@ -18,6 +19,7 @@ const createAlcohol = async ({ type, name, price, description, inStock }) => {
 };
 
 const getAllAlcohol = async () => {
+  // At this rate, why not just select *?
   try {
     const { rows } = await client.query(`
   SELECT type, name, price, description, "inStock"
